@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shaaq Trading | Global Textile Sourcing & Manufacturing</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Inter:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            DEFAULT: '#0B0F19', // Darker, richer navy (almost black)
+                            light: '#1A202C',
+                        },
+                        gold: {
+                            DEFAULT: '#C5A059', // More muted, less yellow gold
+                            light: '#DECBA5'
+                        },
+                        stone: '#FAFAF9', // Warm off-white
+                        concrete: '#F3F4F6' // Cool grey for tech feel
+                    },
+                    fontFamily: {
+                        serif: ['"Bodoni Moda"', 'serif'],
+                        sans: ['Inter', 'sans-serif']
+                    },
+                    letterSpacing: {
+                        widest: '0.2em',
+                        mega: '0.4em'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * { cursor: default; }
+        html, body { 
+            background-color: #FAFAF9; 
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* Bodoni Moda is naturally high contrast and sharp. We remove forced weights to allow the utility classes (like font-light) to work */
+        .serif-heading { 
+            font-family: '"Bodoni Moda"', serif; 
+        }
+        
+        strong, .font-bold { font-weight: 600; }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #C5A059; border-radius: 2px; }
+        
+        .grain-overlay {
+            pointer-events: none;
+            position: fixed;
+            inset: 0;
+            z-index: 999;
+            background-image: url("https://www.transparenttextures.com/patterns/p6-dark.png");
+            opacity: 0.02;
+        }
+
+        .vertical-rl { writing-mode: vertical-rl; }
+        
+        /* Utility for ultra-thin borders */
+        .border-hairline { border-width: 0.5px; }
+        
+        #root { width: 100%; position: relative; }
+    </style>
+    <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@19.0.0",
+    "react-dom": "https://esm.sh/react-dom@19.0.0",
+    "react-dom/client": "https://esm.sh/react-dom@19.0.0/client",
+    "framer-motion": "https://esm.sh/framer-motion@11.11.11?external=react,react-dom",
+    "lucide-react": "https://esm.sh/lucide-react@0.454.0?external=react,react-dom",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="selection:bg-navy selection:text-white">
+    <div class="grain-overlay"></div>
+    <div id="root"></div>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
