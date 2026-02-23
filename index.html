@@ -4,34 +4,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shaaq Trading | Global Textile Sourcing & Manufacturing</title>
+    <title>Shaaq Trading | Custom Clothing & Embroidery</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Inter:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        navy: {
-                            DEFAULT: '#0B0F19', // Darker, richer navy (almost black)
-                            light: '#1A202C',
+                        brand: {
+                            DEFAULT: '#10B981', // Emerald 500 - Sustainable Green
+                            dark: '#059669',    // Emerald 600
+                            light: '#6EE7B7',   // Emerald 300
                         },
-                        gold: {
-                            DEFAULT: '#C5A059', // More muted, less yellow gold
-                            light: '#DECBA5'
+                        pastel: {
+                            mint: '#ECFDF5',   // Emerald 50
+                            rose: '#FFF1F2',   // Rose 50
+                            sky: '#F0F9FF',    // Sky 50
+                            lemon: '#FEFCE8',  // Yellow 50
+                            lavender: '#F5F3FF' // Violet 50
                         },
-                        stone: '#FAFAF9', // Warm off-white
-                        concrete: '#F3F4F6' // Cool grey for tech feel
+                        surface: {
+                            DEFAULT: '#FFFFFF',
+                            subtle: '#FAFAF9', // Stone 50 - Warm Neutral
+                        },
+                        text: {
+                            main: '#064E3B',   // Emerald 900 - Dark Green Text
+                            muted: '#78716C',  // Stone 500 - Warm Grey
+                        }
                     },
                     fontFamily: {
-                        serif: ['"Bodoni Moda"', 'serif'],
-                        sans: ['Inter', 'sans-serif']
+                        sans: ['"DM Sans"', 'sans-serif'],
+                        display: ['"Outfit"', 'sans-serif'],
                     },
-                    letterSpacing: {
-                        widest: '0.2em',
-                        mega: '0.4em'
+                    borderRadius: {
+                        '4xl': '2rem',
+                        'blob': '40% 60% 70% 30% / 40% 50% 60% 50%',
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(0,0,0,0.08)',
+                        'bouncy': '0 10px 25px -5px rgba(16, 185, 129, 0.2), 0 8px 10px -6px rgba(16, 185, 129, 0.1)',
                     }
                 }
             }
@@ -40,41 +54,44 @@
     <style>
         * { cursor: default; }
         html, body { 
-            background-color: #FAFAF9; 
-            font-family: 'Inter', sans-serif;
+            background-color: #F8FAFC; 
+            font-family: 'DM Sans', sans-serif;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             width: 100%;
             margin: 0;
             padding: 0;
+            color: #1E293B;
         }
         
-        /* Bodoni Moda is naturally high contrast and sharp. We remove forced weights to allow the utility classes (like font-light) to work */
-        .serif-heading { 
-            font-family: '"Bodoni Moda"', serif; 
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Outfit', sans-serif;
         }
-        
-        strong, .font-bold { font-weight: 600; }
 
-        ::-webkit-scrollbar { width: 4px; }
+        /* Custom scrollbar for a softer look */
+        ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: #C5A059; border-radius: 2px; }
+        ::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
         
-        .grain-overlay {
-            pointer-events: none;
-            position: fixed;
-            inset: 0;
-            z-index: 999;
-            background-image: url("https://www.transparenttextures.com/patterns/p6-dark.png");
-            opacity: 0.02;
+        /* Blob animation */
+        @keyframes blob-bounce {
+            0% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0, 0) scale(1); }
+        }
+        .animate-blob {
+            animation: blob-bounce 7s infinite;
+        }
+        .animation-delay-2000 {
+            animation-delay: 2s;
+        }
+        .animation-delay-4000 {
+            animation-delay: 4s;
         }
 
-        .vertical-rl { writing-mode: vertical-rl; }
-        
-        /* Utility for ultra-thin borders */
-        .border-hairline { border-width: 0.5px; }
-        
-        #root { width: 100%; position: relative; }
+        #root { width: 100%; position: relative; overflow-x: hidden; }
     </style>
     <script type="importmap">
 {
@@ -91,8 +108,7 @@
 </script>
 <link rel="stylesheet" href="/index.css">
 </head>
-<body class="selection:bg-navy selection:text-white">
-    <div class="grain-overlay"></div>
+<body class="selection:bg-brand-light selection:text-white">
     <div id="root"></div>
 <script type="module" src="/index.tsx"></script>
 </body>

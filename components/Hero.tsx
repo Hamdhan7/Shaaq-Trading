@@ -1,172 +1,99 @@
-
 import React from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { ArrowRight, Sparkles } from 'lucide-react';
 
 interface HeroProps {
   onCta: () => void;
 }
 
 const Hero: React.FC<HeroProps> = ({ onCta }) => {
-  const { scrollY } = useScroll();
-  const yParallax = useTransform(scrollY, [0, 1000], [0, 400]);
-
   return (
-    <div className="relative min-h-[100dvh] w-full bg-navy overflow-hidden flex items-center justify-center pt-28 md:pt-20" data-theme="dark">
+    <div className="relative min-h-[90vh] w-full bg-pastel-sky/30 overflow-hidden flex items-center pt-20">
       
-      {/* 1. Ambient Light / "Blobs" Layer */}
-      <motion.div 
-        animate={{ 
-          scale: [1, 1.2, 1],
-          opacity: [0.3, 0.5, 0.3],
-        }}
-        transition={{ 
-          duration: 8, 
-          repeat: Infinity, 
-          ease: "easeInOut" 
-        }}
-        className="absolute top-[-20%] right-[-10%] w-[400px] md:w-[800px] h-[400px] md:h-[800px] bg-blue-900/40 rounded-full blur-[80px] md:blur-[120px] mix-blend-screen pointer-events-none"
-      />
-      
-      <motion.div 
-        animate={{ 
-          scale: [1, 1.1, 1],
-          opacity: [0.2, 0.4, 0.2],
-          x: [0, 50, 0]
-        }}
-        transition={{ 
-          duration: 10, 
-          repeat: Infinity, 
-          ease: "easeInOut",
-          delay: 1
-        }}
-        className="absolute bottom-[-10%] left-[-10%] w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-gold/10 rounded-full blur-[60px] md:blur-[100px] mix-blend-screen pointer-events-none"
-      />
+      {/* Background Blobs */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+        <div className="absolute top-[-10%] right-[-5%] w-96 h-96 bg-pastel-lavender rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob"></div>
+        <div className="absolute top-[20%] left-[-10%] w-96 h-96 bg-pastel-mint rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000"></div>
+        <div className="absolute bottom-[-20%] left-[20%] w-96 h-96 bg-pastel-rose rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-4000"></div>
+      </div>
 
-      {/* Center Highlight */}
-      <div className="absolute top-[30%] left-[50%] -translate-x-1/2 w-[200px] md:w-[400px] h-[200px] md:h-[400px] bg-white/5 rounded-full blur-[40px] md:blur-[80px] mix-blend-overlay pointer-events-none" />
-
-
-      {/* 2. Main Layout */}
-      <div className="relative z-10 w-full max-w-[1920px] mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center h-full">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         
-        {/* Left: Typography (Now Order 1 on mobile to ensure visibility) */}
-        <div className="space-y-6 md:space-y-10 order-1 flex flex-col justify-center">
-            <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                className="flex items-center gap-3"
-            >
-                <span className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-gold animate-pulse"></span>
-                <span className="text-gold/80 text-[9px] md:text-[10px] font-bold uppercase tracking-[0.3em]">
-                    Global Textile Trading
-                </span>
-            </motion.div>
+        {/* Left Content */}
+        <div className="space-y-8 text-center lg:text-left">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="inline-flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow-soft text-brand text-sm font-bold uppercase tracking-wide"
+          >
+            <Sparkles size={16} />
+            <span>Premium Quality</span>
+          </motion.div>
 
-            <motion.h1 
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="serif-heading text-5xl md:text-8xl lg:text-9xl text-white leading-[0.9] tracking-tighter"
-            >
-                Source.<br/>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-white/40">
-                  Manufacture.
-                </span>
-            </motion.h1>
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="text-5xl md:text-7xl font-display font-bold text-text-main leading-[1.1]"
+          >
+            Custom Apparel, <br/>
+            <span className="text-brand relative inline-block">
+              Simplified.
+              <svg className="absolute w-full h-3 -bottom-1 left-0 text-pastel-mint -z-10" viewBox="0 0 100 10" preserveAspectRatio="none">
+                <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="8" fill="none" />
+              </svg>
+            </span>
+          </motion.h1>
 
-            <motion.p 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                className="text-white/60 font-light text-base md:text-xl leading-relaxed max-w-md border-l border-white/10 pl-6"
-            >
-                A vertically integrated trading house. From yarn sourcing in Osaka to final assembly in Colombo, we engineer the supply chain for the UK's leading institutions.
-            </motion.p>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="text-lg md:text-xl text-text-muted max-w-lg mx-auto lg:mx-0 leading-relaxed"
+          >
+            Premium printing and embroidery for brands, teams, and events. We bring your designs to life with quality that speaks for itself.
+          </motion.p>
 
-            <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.6 }}
-                className="flex flex-wrap items-center gap-4 md:gap-6 pt-2 md:pt-4"
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start"
+          >
+            <button 
+              onClick={onCta}
+              className="px-8 py-4 bg-brand text-white rounded-full font-bold text-lg shadow-bouncy hover:bg-brand-dark transition-all hover:scale-105 active:scale-95 flex items-center gap-2"
             >
-                <button 
-                    onClick={onCta}
-                    className="flex-1 md:flex-none px-6 md:px-8 py-3 md:py-4 bg-white text-navy text-[10px] md:text-[11px] font-bold uppercase tracking-widest hover:bg-gold transition-colors duration-300 rounded-sm shadow-[0_0_20px_rgba(255,255,255,0.1)] text-center whitespace-nowrap"
-                >
-                    Start Enquiry
-                </button>
-                <button className="flex-1 md:flex-none px-6 md:px-8 py-3 md:py-4 border border-white/10 text-white text-[10px] md:text-[11px] font-bold uppercase tracking-widest hover:border-white/30 hover:bg-white/5 transition-all duration-300 rounded-sm backdrop-blur-sm text-center whitespace-nowrap"
-                >
-                    View Capabilities
-                </button>
-            </motion.div>
+              Get Started
+              <ArrowRight size={20} />
+            </button>
+            <button className="px-8 py-4 bg-white text-text-main border border-gray-100 rounded-full font-bold text-lg shadow-soft hover:bg-gray-50 transition-all hover:scale-105 active:scale-95">
+              View Catalog
+            </button>
+          </motion.div>
         </div>
 
-        {/* Right: The "Cutout" Image (Order 2 on mobile) */}
-        <div className="relative order-2 h-[40vh] md:h-[85vh] flex items-end justify-center w-full">
-             
-             {/* Abstract Ring Decorations behind image - Scaled down for mobile */}
-             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] aspect-square border border-white/5 rounded-full animate-[spin_60s_linear_infinite]" />
-             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] aspect-square border border-white/5 rounded-full animate-[spin_40s_linear_infinite_reverse]" />
-             
-             <motion.div 
-                style={{ y: yParallax }}
-                className="relative w-full h-full flex items-end justify-center"
-             >
-                 <img 
-                    src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=1600" 
-                    alt="Executive Uniform Standard"
-                    className="w-full h-full object-cover object-top opacity-100 select-none pointer-events-none mix-blend-normal brightness-90 contrast-110"
-                    style={{
-                        // Fade bottom to blend
-                        maskImage: 'linear-gradient(to bottom, black 40%, transparent 100%)',
-                        WebkitMaskImage: 'linear-gradient(to bottom, black 40%, transparent 100%)', 
-                    }}
-                 />
-                 
-                 {/* Floating Glass Card */}
-                 <motion.div 
-                    animate={{ y: [0, -10, 0] }}
-                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                    className="absolute top-[20%] md:top-[30%] right-4 md:-right-4 bg-white/5 backdrop-blur-xl border border-white/10 p-4 md:p-5 rounded-sm max-w-[140px] md:max-w-[160px]"
-                 >
-                    <div className="text-[8px] md:text-[9px] text-gold font-bold uppercase tracking-widest mb-2">Production</div>
-                    <div className="text-[10px] md:text-xs text-white font-serif leading-tight">Batch No. 2441<br/>Colombo HQ</div>
-                 </motion.div>
-             </motion.div>
-        </div>
+        {/* Right Image */}
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.4 }}
+          className="relative hidden lg:block"
+        >
+          <div className="relative z-10 w-full aspect-square bg-white rounded-[2rem] shadow-bouncy overflow-hidden rotate-3 hover:rotate-0 transition-transform duration-500">
+             <img 
+               src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?q=80&w=1000&auto=format&fit=crop" 
+               alt="Custom T-Shirts" 
+               className="w-full h-full object-cover"
+               referrerPolicy="no-referrer"
+             />
+          </div>
+          {/* Decorative elements behind image */}
+          <div className="absolute -top-10 -right-10 w-32 h-32 bg-pastel-lemon rounded-full animate-bounce delay-700 -z-10"></div>
+          <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-pastel-rose rounded-full animate-pulse delay-1000 -z-10"></div>
+        </motion.div>
 
       </div>
-
-      {/* Bottom Ticker / Trust Bar */}
-      <div className="absolute bottom-0 w-full border-t border-white/5 bg-navy/30 backdrop-blur-md z-20">
-         <div className="flex overflow-hidden py-3 md:py-4">
-             <div className="animate-[scroll_30s_linear_infinite] flex whitespace-nowrap gap-12 md:gap-24 px-8">
-                 {[...Array(6)].map((_, i) => (
-                    <div key={i} className="flex items-center gap-12 md:gap-24">
-                        <span className="text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em] text-white/30 flex items-center gap-3">
-                            <span className="w-1 h-1 bg-gold rounded-full"></span> GLOBAL SOURCING
-                        </span>
-                        <span className="text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em] text-white/30 flex items-center gap-3">
-                            <span className="w-1 h-1 bg-gold rounded-full"></span> FACTORY DIRECT
-                        </span>
-                        <span className="text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em] text-white/30 flex items-center gap-3">
-                            <span className="w-1 h-1 bg-gold rounded-full"></span> DDP LOGISTICS
-                        </span>
-                    </div>
-                 ))}
-             </div>
-         </div>
-      </div>
-      
-      <style>{`
-        @keyframes scroll {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-      `}</style>
-
     </div>
   );
 };

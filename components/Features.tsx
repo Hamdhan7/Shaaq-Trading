@@ -1,80 +1,83 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Globe, Factory, Ship } from 'lucide-react';
+import { Globe, Shirt, Truck, Palette, Zap, Leaf } from 'lucide-react';
 
 const Features: React.FC = () => {
   const services = [
     {
-      id: "01",
-      title: 'Global Sourcing',
-      desc: 'We procure technical fabrics and raw materials directly from mills in Japan, Italy, and China to meet exact specifications.',
-      icon: <Globe className="w-6 h-6 text-navy" />
+      title: 'Made for You',
+      desc: 'Unique apparel that perfectly matches your brand identity.',
+      icon: <Palette className="w-6 h-6 text-brand" />,
+      color: 'bg-pastel-sky'
     },
     {
-      id: "02",
-      title: 'Vertical Manufacturing',
-      desc: 'Owned facilities in Colombo allow for rigorous Quality Control (AQL 2.5) and ethical oversight from cut to pack.',
-      icon: <Factory className="w-6 h-6 text-navy" />
+      title: 'Quality First',
+      desc: 'Finest fabrics ensuring comfort and durability.',
+      icon: <Globe className="w-6 h-6 text-pink-500" />,
+      color: 'bg-pastel-rose'
     },
     {
-      id: "03",
-      title: 'Freight & Logistics',
-      desc: 'End-to-end supply chain management. We handle customs, freight, and DDP delivery directly to your UK distribution center.',
-      icon: <Ship className="w-6 h-6 text-navy" />
+      title: 'Quick Shipping',
+      desc: 'Streamlined logistics for on-time delivery.',
+      icon: <Truck className="w-6 h-6 text-emerald-500" />,
+      color: 'bg-pastel-mint'
+    },
+    {
+      title: 'Expert Print',
+      desc: 'Crisp, lasting logos with top-tier technology.',
+      icon: <Shirt className="w-6 h-6 text-purple-500" />,
+      color: 'bg-pastel-lavender'
+    },
+    {
+      title: 'Express Service',
+      desc: 'Need it fast? We get it to you in record time.',
+      icon: <Zap className="w-6 h-6 text-yellow-500" />,
+      color: 'bg-pastel-lemon'
+    },
+    {
+      title: 'Eco-Friendly',
+      desc: 'Organic and recycled materials for a better planet.',
+      icon: <Leaf className="w-6 h-6 text-green-600" />,
+      color: 'bg-green-100'
     }
   ];
 
   return (
-    <section className="py-16 md:py-32 bg-stone" data-theme="light">
-      <div className="max-w-[1920px] mx-auto px-6 md:px-12">
+    <section className="py-20 bg-white">
+      <div className="max-w-7xl mx-auto px-6">
         
-        {/* TRUST SIGNALS / CLIENT LOGOS */}
-        <div className="mb-16 md:mb-32 border-b border-navy/10 pb-12">
-            <p className="text-center text-[10px] font-bold uppercase tracking-mega text-navy/40 mb-8">Supply Chain Partner For</p>
-            <div className="flex flex-wrap justify-center md:justify-between items-center gap-8 md:gap-12 opacity-40 grayscale hover:grayscale-0 transition-all duration-500">
-                {['St. Michaels Academy', 'Barclays Corporate', 'The Royal Hotel', 'Imperial College', 'TechSpace London'].map((client, i) => (
-                    <span key={i} className="serif-heading text-lg md:text-2xl text-navy font-bold text-center">{client}</span>
-                ))}
-            </div>
-        </div>
-
-        <div className="mb-12 md:mb-24 flex flex-col md:flex-row justify-between items-end gap-4">
-          <h2 className="serif-heading text-4xl md:text-6xl text-navy">
-            The Trading Model.
-          </h2>
-          <span className="hidden md:block text-[10px] font-bold uppercase tracking-mega text-navy/40 mb-2">
-            Integrated Solutions
+        <div className="text-center mb-16">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-brand/10 text-brand font-bold text-sm uppercase tracking-wide mb-4">
+            Why Choose Us
           </span>
+          <h2 className="text-4xl md:text-5xl font-display font-bold text-text-main mb-6">
+            Everything you need <br/> to build your brand.
+          </h2>
+          <p className="text-lg text-text-muted max-w-2xl mx-auto">
+            Simple, fast, and reliable custom clothing.
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((item, idx) => (
             <motion.div 
               key={idx}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: idx * 0.2, duration: 0.8 }}
-              className="group flex flex-col justify-between min-h-[300px] md:h-80 bg-white border border-navy/5 p-6 md:p-10 hover:border-gold/50 hover:shadow-2xl hover:shadow-gold/5 transition-all duration-500"
+              transition={{ delay: idx * 0.1 }}
+              className="group p-8 rounded-[2rem] bg-surface-subtle border border-transparent hover:border-gray-100 hover:bg-white hover:shadow-bouncy transition-all duration-300"
             >
-              <div className="flex justify-between items-start w-full mb-6 md:mb-0">
-                 <div className="p-3 bg-stone rounded-full group-hover:bg-gold group-hover:text-white transition-colors duration-500">
-                    {React.cloneElement(item.icon as React.ReactElement<any>, { className: "w-6 h-6 transition-colors duration-500 group-hover:text-white" })}
-                 </div>
-                 <span className="text-[10px] font-bold text-navy/30 tracking-widest">
-                  {item.id}
-                 </span>
+              <div className={`w-14 h-14 rounded-2xl ${item.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                {item.icon}
               </div>
               
-              <div>
-                <h3 className="serif-heading text-2xl md:text-3xl text-navy mb-3 md:mb-4 group-hover:translate-x-1 transition-transform duration-500">
-                  {item.title}
-                </h3>
-                <p className="text-sm text-navy/50 leading-relaxed font-light group-hover:text-navy/70 transition-colors">
-                  {item.desc}
-                </p>
-              </div>
+              <h3 className="text-xl font-display font-bold text-text-main mb-3">
+                {item.title}
+              </h3>
+              <p className="text-text-muted leading-relaxed">
+                {item.desc}
+              </p>
             </motion.div>
           ))}
         </div>

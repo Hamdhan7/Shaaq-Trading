@@ -1,97 +1,110 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Mail, Phone, MapPin } from 'lucide-react';
 
 const Contact: React.FC = () => {
   return (
-    <div className="bg-stone min-h-screen pt-32 md:pt-48 pb-12 md:pb-24 px-6" data-theme="light">
-      <div className="max-w-5xl mx-auto">
+    <div className="bg-pastel-sky/20 min-h-screen pt-32 pb-20 px-6">
+      <div className="max-w-6xl mx-auto">
         
-        <div className="mb-12 md:mb-24 text-center">
-          <span className="text-[9px] font-bold uppercase tracking-mega text-gold mb-4 md:mb-6 block">Trade Enquiry</span>
-          <h1 className="serif-heading text-4xl md:text-7xl text-navy">Get a Quote.</h1>
-          <p className="mt-6 text-navy/50 text-base md:text-lg max-w-xl mx-auto font-light">
-            Tell us about your requirements. We specialize in bulk orders for schools, corporate teams, and hospitality.
+        <div className="text-center mb-16">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-brand/10 text-brand font-bold text-sm uppercase tracking-wide mb-4">
+            Get in Touch
+          </span>
+          <h1 className="text-5xl md:text-6xl font-display font-bold text-text-main mb-6">
+            Let's start your project.
+          </h1>
+          <p className="text-xl text-text-muted max-w-2xl mx-auto">
+            Whether you need 50 shirts or 5,000 uniforms, we're here to help.
           </p>
         </div>
 
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="bg-white p-6 md:p-24 shadow-[0_0_50px_rgba(0,0,0,0.02)] border border-navy/5"
-        >
-          <form className="space-y-8 md:space-y-12" onSubmit={e => e.preventDefault()}>
-            
-            {/* Contact Details */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-              <div className="group">
-                <label className="block text-[9px] font-bold uppercase tracking-widest text-navy/40 mb-3">Name</label>
-                <input type="text" className="w-full border-b border-navy/10 py-3 bg-transparent outline-none text-navy font-serif text-xl focus:border-gold transition-colors rounded-none" placeholder="Full Name" />
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+          
+          {/* Contact Info */}
+          <div className="lg:col-span-1 space-y-8">
+            <div className="bg-white p-8 rounded-[2rem] shadow-soft hover:shadow-bouncy transition-all duration-300">
+              <div className="w-12 h-12 bg-pastel-rose rounded-2xl flex items-center justify-center text-pink-500 mb-6">
+                <Mail size={24} />
               </div>
-              <div className="group">
-                <label className="block text-[9px] font-bold uppercase tracking-widest text-navy/40 mb-3">Organization</label>
-                <input type="text" className="w-full border-b border-navy/10 py-3 bg-transparent outline-none text-navy font-serif text-xl focus:border-gold transition-colors rounded-none" placeholder="School or Company Name" />
-              </div>
+              <h3 className="text-xl font-bold text-text-main mb-2">Email Us</h3>
+              <p className="text-text-muted mb-4">For general inquiries and quotes.</p>
+              <a href="mailto:hello@shaaqtrading.com" className="text-brand font-bold hover:underline">hello@shaaqtrading.com</a>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-              <div className="group">
-                <label className="block text-[9px] font-bold uppercase tracking-widest text-navy/40 mb-3">Email</label>
-                <input type="email" className="w-full border-b border-navy/10 py-3 bg-transparent outline-none text-navy font-serif text-xl focus:border-gold transition-colors rounded-none" placeholder="email@organization.com" />
+            <div className="bg-white p-8 rounded-[2rem] shadow-soft hover:shadow-bouncy transition-all duration-300">
+              <div className="w-12 h-12 bg-pastel-mint rounded-2xl flex items-center justify-center text-emerald-500 mb-6">
+                <Phone size={24} />
               </div>
-              <div className="group">
-                <label className="block text-[9px] font-bold uppercase tracking-widest text-navy/40 mb-3">Phone</label>
-                <input type="tel" className="w-full border-b border-navy/10 py-3 bg-transparent outline-none text-navy font-serif text-xl focus:border-gold transition-colors rounded-none" placeholder="+44 ..." />
-              </div>
+              <h3 className="text-xl font-bold text-text-main mb-2">Call Us</h3>
+              <p className="text-text-muted mb-4">Mon-Fri from 9am to 6pm.</p>
+              <a href="tel:+441234567890" className="text-brand font-bold hover:underline">+44 (0) 123 456 7890</a>
             </div>
 
-            {/* Quote Specifics */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 pt-0 md:pt-8">
-               <div className="group">
-                <label className="block text-[9px] font-bold uppercase tracking-widest text-navy/40 mb-3">Service Interest</label>
-                <select className="w-full border-b border-navy/10 py-3 bg-transparent outline-none text-navy font-serif text-xl focus:border-gold transition-colors appearance-none rounded-none">
-                    <option>School Uniforms</option>
-                    <option>Corporate Workwear</option>
-                    <option>Event Merchandise</option>
-                    <option>Bespoke Manufacturing</option>
-                    <option>Fabrics & Raw Materials</option>
+            <div className="bg-white p-8 rounded-[2rem] shadow-soft hover:shadow-bouncy transition-all duration-300">
+              <div className="w-12 h-12 bg-pastel-lemon rounded-2xl flex items-center justify-center text-yellow-600 mb-6">
+                <MapPin size={24} />
+              </div>
+              <h3 className="text-xl font-bold text-text-main mb-2">Visit Us</h3>
+              <p className="text-text-muted mb-4">Come say hi at our office.</p>
+              <span className="text-text-main font-medium">71-75 Shelton Street, London</span>
+            </div>
+          </div>
+
+          {/* Form */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="lg:col-span-2 bg-white p-8 md:p-12 rounded-[2.5rem] shadow-bouncy"
+          >
+            <form className="space-y-8" onSubmit={e => e.preventDefault()}>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="space-y-2">
+                  <label className="text-sm font-bold text-text-main ml-1">Name</label>
+                  <input type="text" className="w-full px-6 py-4 bg-surface-subtle rounded-2xl border-transparent focus:bg-white focus:border-brand focus:ring-2 focus:ring-brand/20 transition-all outline-none" placeholder="Your Name" />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-bold text-text-main ml-1">Company</label>
+                  <input type="text" className="w-full px-6 py-4 bg-surface-subtle rounded-2xl border-transparent focus:bg-white focus:border-brand focus:ring-2 focus:ring-brand/20 transition-all outline-none" placeholder="Company Name" />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="space-y-2">
+                  <label className="text-sm font-bold text-text-main ml-1">Email</label>
+                  <input type="email" className="w-full px-6 py-4 bg-surface-subtle rounded-2xl border-transparent focus:bg-white focus:border-brand focus:ring-2 focus:ring-brand/20 transition-all outline-none" placeholder="you@example.com" />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-bold text-text-main ml-1">Phone</label>
+                  <input type="tel" className="w-full px-6 py-4 bg-surface-subtle rounded-2xl border-transparent focus:bg-white focus:border-brand focus:ring-2 focus:ring-brand/20 transition-all outline-none" placeholder="+44 ..." />
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-sm font-bold text-text-main ml-1">What do you need?</label>
+                <select className="w-full px-6 py-4 bg-surface-subtle rounded-2xl border-transparent focus:bg-white focus:border-brand focus:ring-2 focus:ring-brand/20 transition-all outline-none appearance-none cursor-pointer">
+                  <option>Custom T-Shirts</option>
+                  <option>Workwear & Uniforms</option>
+                  <option>Hoodies & Sweatshirts</option>
+                  <option>Caps & Hats</option>
+                  <option>Other</option>
                 </select>
               </div>
-              <div className="group">
-                <label className="block text-[9px] font-bold uppercase tracking-widest text-navy/40 mb-3">Estimated Quantity</label>
-                <select className="w-full border-b border-navy/10 py-3 bg-transparent outline-none text-navy font-serif text-xl focus:border-gold transition-colors appearance-none rounded-none">
-                    <option>50 - 100 Units</option>
-                    <option>100 - 500 Units</option>
-                    <option>500 - 1000 Units</option>
-                    <option>1000+ Units</option>
-                </select>
+
+              <div className="space-y-2">
+                <label className="text-sm font-bold text-text-main ml-1">Message</label>
+                <textarea rows={4} className="w-full px-6 py-4 bg-surface-subtle rounded-2xl border-transparent focus:bg-white focus:border-brand focus:ring-2 focus:ring-brand/20 transition-all outline-none resize-none" placeholder="Tell us more about your project..." />
               </div>
-            </div>
 
-            <div className="group pt-0 md:pt-4">
-              <label className="block text-[9px] font-bold uppercase tracking-widest text-navy/40 mb-3">Additional Details</label>
-              <textarea rows={3} className="w-full border-b border-navy/10 py-3 bg-transparent outline-none text-navy font-serif text-xl focus:border-gold transition-colors resize-none rounded-none" placeholder="Tell us about specific fabric needs, deadlines, or design ideas..." />
-            </div>
-
-            <div className="pt-8 flex flex-col md:flex-row justify-between items-center gap-8">
-              <p className="text-xs text-navy/40 max-w-xs text-center md:text-left">
-                * Our team typically responds with a preliminary estimate within 24 hours.
-              </p>
-              <button className="w-full md:w-auto px-12 py-5 bg-navy text-white text-xs font-bold uppercase tracking-widest hover:bg-gold transition-colors duration-500 shadow-lg shadow-navy/20">
-                Request Quote
+              <button className="w-full py-5 bg-brand text-white rounded-2xl font-bold text-lg shadow-bouncy hover:bg-brand-dark hover:scale-[1.02] active:scale-[0.98] transition-all duration-300">
+                Send Message
               </button>
-            </div>
 
-          </form>
-        </motion.div>
+            </form>
+          </motion.div>
 
-        <div className="mt-16 md:mt-24 text-center space-y-4">
-          <p className="text-[10px] font-bold uppercase tracking-widest text-navy/40">Direct Sales & Inquiries</p>
-          <p className="serif-heading text-lg md:text-xl text-navy selection:bg-gold selection:text-white">
-            <a href="mailto:info@shaaqtrading.com" className="hover:text-gold transition-colors">info@shaaqtrading.com</a>
-          </p>
         </div>
-
       </div>
     </div>
   );

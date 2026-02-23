@@ -1,120 +1,101 @@
-
 import React from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { MapPin, Users, Heart } from 'lucide-react';
 
 const About: React.FC = () => {
-  const { scrollYProgress } = useScroll();
-  const yImage = useTransform(scrollYProgress, [0, 1], [0, -100]);
-
   return (
-    <div className="bg-white overflow-hidden">
-      {/* Immersive Header - DARK */}
-      <section className="h-[50vh] md:h-[60vh] relative flex items-center justify-center bg-navy" data-theme="dark">
-        <motion.div 
-          style={{ y: yImage }}
-          className="absolute inset-0 opacity-50 grayscale mix-blend-luminosity"
-        >
-          {/* Image: Container Ship or Logistics Hub to signify Trading */}
-          <img src="https://images.unsplash.com/photo-1494412574643-35d324698422?auto=format&fit=crop&q=80&w=2400" className="w-full h-full object-cover" />
-        </motion.div>
-        <div className="relative z-10 text-center space-y-4 md:space-y-6 px-6">
+    <div className="bg-white overflow-hidden pt-20">
+      
+      {/* Header */}
+      <section className="relative py-20 bg-pastel-lavender/30">
+        <div className="absolute top-[-10%] left-[-5%] w-64 h-64 bg-pastel-lavender rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob"></div>
+        <div className="absolute bottom-[-10%] right-[-5%] w-64 h-64 bg-pastel-sky rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000"></div>
+        
+        <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
           <motion.span 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="text-gold uppercase tracking-[0.4em] md:tracking-[0.6em] text-[9px] font-bold block"
+            className="inline-block px-4 py-1.5 rounded-full bg-brand/10 text-brand font-bold text-sm uppercase tracking-wide mb-6"
           >
-            ESTABLISHED 1994
+            Our Story
           </motion.span>
           <motion.h1 
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="serif-heading text-5xl md:text-9xl text-white tracking-tight"
+            className="text-5xl md:text-7xl font-display font-bold text-text-main mb-8"
           >
-            Global Trade
+            We make clothing <br/> <span className="text-brand">personal.</span>
           </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="text-xl text-text-muted max-w-2xl mx-auto leading-relaxed"
+          >
+            From a small family business to a global partner for schools and brands. We keep it simple: great clothes, made right.
+          </motion.p>
         </div>
       </section>
 
-      {/* Philosophy Section - LIGHT */}
-      <section className="py-20 md:py-48 px-6 bg-white" data-theme="light">
-        <div className="max-w-5xl mx-auto space-y-16 md:space-y-24">
-          <motion.div 
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-center"
-          >
-            <h2 className="serif-heading text-4xl md:text-7xl text-navy leading-tight">
-              London to<br /><span className="italic font-light">Colombo.</span>
-            </h2>
-            <div className="space-y-6 md:space-y-8">
-              <p className="text-lg md:text-xl text-navy/70 font-light leading-relaxed">
-                Founded by Shaqeeq Ahamed, Shaaq Trading has evolved from a boutique garment house into a multinational trading operation.
-              </p>
-              <p className="text-base md:text-lg text-navy/50 font-light leading-relaxed">
-                We bridge the gap between British design standards and South Asian manufacturing capabilities. By owning the production line in Colombo and managing our own freight logistics, we eliminate the volatility of third-party sourcing.
-              </p>
+      {/* Content */}
+      <section className="py-20 px-6">
+        <div className="max-w-7xl mx-auto space-y-24">
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div className="relative">
+              <div className="rounded-[2.5rem] overflow-hidden shadow-bouncy transform -rotate-2 hover:rotate-0 transition-transform duration-500 aspect-[4/3]">
+                <img 
+                  src="https://images.unsplash.com/photo-1558507652-2d9626c4e67a?auto=format&fit=crop&q=80&w=1200" 
+                  alt="Design Studio" 
+                  className="w-full h-full object-cover"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+              <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-pastel-mint rounded-full -z-10"></div>
             </div>
-          </motion.div>
+            
+            <div className="space-y-6">
+              <h2 className="text-3xl md:text-4xl font-display font-bold text-text-main">
+                Designed in London. <br/> Made by Us.
+              </h2>
+              <p className="text-lg text-text-muted leading-relaxed">
+                We own our production facilities, which means we control the quality from start to finish. No middlemen, just great clothing delivered directly to you.
+              </p>
+              <div className="grid grid-cols-2 gap-6 pt-4">
+                <div className="p-6 bg-surface-subtle rounded-3xl">
+                  <Users className="w-8 h-8 text-brand mb-3" />
+                  <h3 className="font-bold text-text-main">Family Run</h3>
+                  <p className="text-sm text-text-muted">Personal care in every order.</p>
+                </div>
+                <div className="p-6 bg-surface-subtle rounded-3xl">
+                  <Heart className="w-8 h-8 text-pink-500 mb-3" />
+                  <h3 className="font-bold text-text-main">Ethical</h3>
+                  <p className="text-sm text-text-muted">Fair wages & safe conditions.</p>
+                </div>
+              </div>
+            </div>
+          </div>
 
-          {/* Global Footprint Grid */}
-          <div className="border-t border-navy/10 pt-16 md:pt-24">
-             <span className="text-[9px] text-gold font-bold uppercase tracking-mega block mb-12">Global Footprint</span>
-             <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-                <div className="space-y-4">
-                    <h3 className="serif-heading text-2xl text-navy">London, UK</h3>
-                    <p className="text-xs text-navy/50 leading-relaxed">
-                        <strong>Registered Office & Design</strong><br/>
-                        71-75 Shelton Street<br/>
-                        Covent Garden, WC2H 9JQ
-                    </p>
-                </div>
-                <div className="space-y-4">
-                    <h3 className="serif-heading text-2xl text-navy">Colombo, LK</h3>
-                    <p className="text-xs text-navy/50 leading-relaxed">
-                        <strong>Manufacturing Plant</strong><br/>
-                        Cut-and-Sew, Embroidery, QC Labs, Ethical Auditing.
-                    </p>
-                </div>
-                <div className="space-y-4">
-                    <h3 className="serif-heading text-2xl text-navy">Osaka, JP</h3>
-                    <p className="text-xs text-navy/50 leading-relaxed">
-                        <strong>Technical Sourcing</strong><br/>
-                        Performance Fabrics, Buttons, Zippers, and Trims.
-                    </p>
-                </div>
+          {/* Locations */}
+          <div className="bg-surface-subtle rounded-[3rem] p-12 text-center">
+             <h2 className="text-3xl font-display font-bold text-text-main mb-12">Where we operate</h2>
+             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {[
+                  { city: 'London, UK', role: 'Design & HQ', color: 'bg-pastel-sky' },
+                  { city: 'Colombo, LK', role: 'Manufacturing', color: 'bg-pastel-mint' },
+                  { city: 'Osaka, JP', role: 'Sourcing', color: 'bg-pastel-rose' }
+                ].map((loc, i) => (
+                  <div key={i} className="bg-white p-8 rounded-[2rem] shadow-sm hover:shadow-bouncy transition-all duration-300">
+                    <div className={`w-16 h-16 mx-auto ${loc.color} rounded-full flex items-center justify-center mb-6 text-text-main`}>
+                      <MapPin size={24} />
+                    </div>
+                    <h3 className="text-xl font-bold text-text-main mb-2">{loc.city}</h3>
+                    <p className="text-text-muted">{loc.role}</p>
+                  </div>
+                ))}
              </div>
           </div>
-        </div>
-      </section>
 
-      {/* Process/Logistics Section - DARK */}
-      <section className="py-24 md:py-48 bg-navy text-white px-6" data-theme="dark">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-32 items-center">
-             <div className="space-y-8">
-                <h2 className="serif-heading text-3xl md:text-5xl leading-tight">Freight &<br/>Fulfillment.</h2>
-                <p className="text-white/60 font-light leading-relaxed">
-                    We don't just make it; we move it. Shaaq Trading handles all freight forwarding, customs clearance, and duty payments. We deliver DDP (Delivered Duty Paid) to your warehouse, meaning the price we quote is the final landed price. No hidden import fees. No port delays.
-                </p>
-             </div>
-             <div className="grid grid-cols-2 gap-4">
-                 <div className="p-6 bg-white/5 border border-white/10">
-                    <div className="text-2xl font-bold text-gold mb-2">25k+</div>
-                    <div className="text-[9px] uppercase tracking-widest text-white/50">Monthly Capacity (Units)</div>
-                 </div>
-                 <div className="p-6 bg-white/5 border border-white/10">
-                    <div className="text-2xl font-bold text-gold mb-2">14</div>
-                    <div className="text-[9px] uppercase tracking-widest text-white/50">Days Air Freight</div>
-                 </div>
-                 <div className="p-6 bg-white/5 border border-white/10">
-                    <div className="text-2xl font-bold text-gold mb-2">AQL 2.5</div>
-                    <div className="text-[9px] uppercase tracking-widest text-white/50">Quality Standard</div>
-                 </div>
-                 <div className="p-6 bg-white/5 border border-white/10">
-                    <div className="text-2xl font-bold text-gold mb-2">100%</div>
-                    <div className="text-[9px] uppercase tracking-widest text-white/50">Carbon Offset</div>
-                 </div>
-             </div>
         </div>
       </section>
     </div>
